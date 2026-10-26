@@ -81,6 +81,7 @@ oblige à repasser derrière.
 | 12 | Recherches sauvegardées | `12-recherches-sauvegardees.md` | — |
 | 13 | Quotas, coûts, budget | `13-quotas-couts-budget.md` | Transverse, à câbler quand les sources tournent |
 | 14 | Onglet Tri | `16-onglet-tri.md` | Après Fusion/doublons (Splink) : c'est l'écran qui valide ses propositions |
+| 15 | Brancher les sources | `17-sources-a-implementer.md` | Traduit `sources-candidates-21.10.2026.md` en consigne de branchement, triée par clé et priorité |
 
 Questions encore ouvertes : `14-questions-ouvertes.md`. **Ne les tranche pas seul** — remonte-les.
 
@@ -109,6 +110,7 @@ pilote/
   14-questions-ouvertes.md        ce qui n'est pas tranché
   15-mecanismes-et-references.md  mecanismes existants a reprendre, cadre legal
   16-onglet-tri.md                validation des rapprochements proposes
+  17-sources-a-implementer.md     sources candidates traduites en consigne de branchement
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel

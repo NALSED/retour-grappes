@@ -8,37 +8,24 @@ Une clé posée dans grappes reste **« à vérifier »** jusqu'à son premier t
 
 ### 1. Comptes à créer maintenant (sources « à ajouter »)
 
-État au 26/10/2026, 14 h 52.
+État au 26/10/2026, 17 h 25 : **toutes obtenues sauf l'API Radio France**, en attente de la validation
+manuelle de leurs équipes.
 
 | Source | Catégorie | Où prendre la clé | Ce qu'on a gratuitement | État |
 | :-- | :-- | :-- | :-- | :-- |
-| Exa | Web | https://dashboard.exa.ai/api-keys | 10 $ à l'inscription, puis 10 $/mois sans carte | **à faire** |
+| Exa | Web | https://dashboard.exa.ai/api-keys | 10 $ à l'inscription, puis 10 $/mois sans carte | fait |
 | Linkup | Web | https://app.linkup.so | 4 000 requêtes offertes | fait |
 | Firecrawl | Web | https://www.firecrawl.dev/app/api-keys | 1 000 crédits/mois, sans carte | fait |
 | Serper | Web | https://serper.dev → « Sign up » | 2 500 requêtes offertes, sans carte | fait |
 | Media Cloud | Presse | compte sur https://search.mediacloud.org/sign-in, puis le jeton dans le profil | 4 000 requêtes/semaine | fait |
-| API Radio France | Presse | https://developers.radiofrance.fr | 1 000 requêtes/jour, accès sur demande | **à faire** |
+| API Radio France | Presse | https://developers.radiofrance.fr | 1 000 requêtes/jour, accès sur demande | **en attente** |
 | The Guardian | Presse | https://open-platform.theguardian.com/access/ | clé développeur gratuite | fait |
-| New York Times | Presse | https://developer.nytimes.com/get-started | 4 000 appels/jour, 10/minute sur l'API Article Search | **à faire** |
-| GeoNames | Lieux | https://www.geonames.org/login (compte gratuit) | pas de clé : le **nom d'utilisateur** sert de paramètre | **à faire** |
+| New York Times | Presse | https://developer.nytimes.com/get-started | 4 000 appels/jour, 10/minute sur l'API Article Search | fait |
+| GeoNames | Lieux | https://www.geonames.org/login (compte gratuit) | pas de clé : le **nom d'utilisateur** sert de paramètre | fait |
 
-### Marche à suivre pour les trois qui restent
+### Ce qui reste : l'API Radio France
 
-**Exa.** Ouvrir https://dashboard.exa.ai/api-keys, créer le compte, puis créer une clé depuis cette page.
-La clé se passe en en-tête, `Authorization: Bearer <clé>` ou `x-api-key: <clé>`. Les bibliothèques
-officielles `exa-py` et `exa-js` lisent la variable d'environnement `EXA_API_KEY`.
-
-**New York Times.** Quatre étapes, dans cet ordre :
-1. créer le compte sur https://developer.nytimes.com/get-started ;
-2. se connecter sur cette même page ;
-3. déclarer une application, par exemple « grappes » ;
-4. **cocher les API voulues avant de générer la clé** — au minimum *Article Search*, et *Archive* si on
-   veut remonter dans le temps.
-
-Le point qui piège : une clé n'interroge que les API cochées **au moment où elle a été générée**. Une API
-oubliée demande une nouvelle clé. Limites de l'API Article Search : 4 000 appels par jour, 10 par minute.
-
-**API Radio France.** Le compte et la clé sont deux étapes distinctes :
+Le compte et la clé sont deux étapes distinctes :
 1. créer le compte sur https://developers.radiofrance.fr ;
 2. demander la clé depuis le portail. Le formulaire demande le nom de l'application, une description du
    projet, et un numéro RCS — à voir ce qu'il accepte pour un projet personnel sans société ;
