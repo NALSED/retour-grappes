@@ -56,6 +56,32 @@ applications d'agrégation de flux live et de podcasts, elle, est confirmée et 
 Aucune spécification. Reportés volontairement par Sednal. Les onglets restent visibles et grisés.
 **N'improvise rien.**
 
+## 8. Le périmètre légal : personnes morales seulement ?
+
+**Le point le plus important de cette liste.** Les recommandations de la CNIL de juin 2024 disent qu'une
+compilation d'informations en ligne pour constituer le profil d'une personne nommément désignée **ne
+relève pas de l'intérêt légitime** et demande son consentement.
+
+Chercher une association ou une entreprise est hors de ce champ : le RGPD protège les personnes
+physiques, pas les personnes morales. Chercher une personne nommée y entre de plein fouet.
+
+Proposition : écrire que grappes a pour objet les **personnes morales**, et que les données de dirigeants
+ne servent jamais de clé de rapprochement. Détail et conséquences dans `15-mecanismes-et-references.md`
+§8.
+
+**Tant que ce n'est pas tranché, ne code aucune fonction de recherche par nom de personne physique.**
+
+## 9. Le code Admiralty remplace-t-il « Origine de l'information » ?
+
+Le champ actuel (première main / seconde main) mélange deux choses que la norme OTAN sépare : la
+fiabilité de la **source** (A–F) et la crédibilité de l'**information** (1–6). Voir
+`15-mecanismes-et-references.md` §2.
+
+## 10. L'onglet Tri est-il l'écran de validation des rapprochements ?
+
+Tous les moteurs de rapprochement sérieux prévoient une étape de confirmation humaine. Elle n'existe
+nulle part dans la maquette. L'onglet *Tri*, sans spécification, est le candidat naturel.
+
 ---
 
 ## Ce qui est tranché, pour mémoire

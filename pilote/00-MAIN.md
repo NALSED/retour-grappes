@@ -76,6 +76,10 @@ oblige à repasser derrière.
 
 Questions encore ouvertes : `14-questions-ouvertes.md`. **Ne les tranche pas seul** — remonte-les.
 
+**Avant de commencer une étape, regarde `15-mecanismes-et-references.md`.** Il nomme, pour chaque partie
+dure du projet, l'outil ou la norme qui la résout déjà : le rapprochement d'entités, la cotation des
+sources, la traçabilité, le canevas, et le cadre légal. Le principe du projet est de ne rien réinventer.
+
 ## 5. Ce qu'il y a dans ce dossier
 
 ````
