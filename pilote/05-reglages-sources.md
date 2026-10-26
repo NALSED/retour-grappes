@@ -42,13 +42,42 @@ Panneau latéral pour *Modifier*, fenêtre centrée pour *Ajouter* — voir `cha
 | Catégorie | puces | une seule |
 | Rôle | puces | une seule parmi les six |
 | Coût | puces | *gratuit* / *payant* |
-| Origine de l'information | puces | *première main* / *seconde main* |
+| Fiabilité de la source | puces | une lettre A–F, voir plus bas |
 | Pays | texte | `FR`, `UK`, `Mondial`… |
 | **Langue** | texte | `fr`, `en`, `de`… — **nouveau, voir plus bas** |
 | État | puces | les trois états |
 | Quota | nombre + unité | vide = illimité |
 | Description | texte long | — |
 | Clé d'API | **masqué** | voir plus bas |
+
+### Le champ Fiabilité de la source
+
+**Décidé le 26/10/2026**, remplace l'ancien champ « Origine de l'information » (première main / seconde
+main), qui mélangeait deux choses que le code OTAN *Admiralty* sépare proprement :
+
+- la **fiabilité de la source** — une propriété stable de la source elle-même, notée en lettres **A à
+  F**, c'est ce champ-ci ;
+- la **crédibilité de l'information** — une propriété de chaque fait rapporté, notée en chiffres **1 à
+  6**, qui s'appliquera à la fiche de résultat (pas encore maquettée, voir `14-questions-ouvertes.md`
+  §10 et le Tableau de bord).
+
+Six puces, une lettre chacune, et sous les puces une phrase qui explique la lettre choisie (pas six
+phrases affichées à la fois) :
+
+| Lettre | Sens |
+| :-- | :-- |
+| **A** | Entièrement fiable : source officielle, recoupée, sans historique d'erreur |
+| **B** | Fiable d'habitude : source établie, erreurs rares et corrigées |
+| **C** | Assez fiable : source correcte mais déjà en défaut par le passé |
+| **D** | Pas toujours fiable : source irrégulière, à recouper systématiquement |
+| **E** | Non fiable : source peu fondée ou orientée |
+| **F** | Fiabilité indéterminée : pas assez d'historique pour juger |
+
+Valeur par défaut à la création : **B** pour une source institutionnelle ou officielle, **D** pour une
+source Web ou Presse — à ajuster une fois la source testée.
+
+Référence : code Admiralty, système OTAN 6×6 (deux axes A–F / 1–6). Détail dans
+`15-mecanismes-et-references.md` §2.
 
 ### Le champ Langue
 

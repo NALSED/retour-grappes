@@ -21,6 +21,12 @@ a besoin d'un mot qui n'est pas ici, c'est cette page qu'on modifie d'abord, pas
 | **Ranger** | Replace les tuiles en colonnes | Plan de travail | — |
 | **Filtrer** | Réduit une liste affichée | En-tête de Réglages | — |
 | **Replier** / **Déplier** | Range la fenêtre Aide sur sa barre de titre, ou la rouvre | Fenêtre Aide | « Réduire », qui dit la même chose que *Filtrer* |
+| **Confirmer** | Accepte un rapprochement proposé : les fiches fusionnent dans la grappe | Onglet Tri | — |
+| **Séparer** | Refuse un rapprochement proposé : les fiches restent distinctes | Onglet Tri | « Rejeter », plus dur que ce que fait réellement l'action |
+
+**Confirmer** et **Séparer** ne sont pas non plus un seul et même geste : *Confirmer* avance la grappe,
+*Séparer* n'efface rien — la fiche écartée reste une fiche normale, cherchable, juste pas fondue avec
+l'autre. Aucun des deux ne supprime quoi que ce soit : voir la distinction retirer/supprimer ci-dessous.
 
 Retirer et supprimer ne sont pas synonymes, et c'est la distinction la plus importante de cette page.
 **Retirer** cache une source de la liste et ne touche à aucun fichier : on peut la remettre. **Supprimer**
@@ -52,6 +58,24 @@ s'appelle **Aide** et jamais « assistant » : deux objets différents, deux nom
 Au féminin pour une source, au masculin pour un outil : « source opérationnelle », « outil opérationnel ».
 Jamais « actif », « inactif », « OK », « KO », « en ligne » ni « hors ligne ».
 
+## La fiabilité d'une source : A à F
+
+Code Admiralty (norme OTAN). Remplace « première main / seconde main », qui confondait la fiabilité de la
+source avec la crédibilité d'un fait précis — deux choses que ce code sépare.
+
+| Lettre | Sens |
+| :-- | :-- |
+| **A** | Entièrement fiable |
+| **B** | Fiable d'habitude |
+| **C** | Assez fiable |
+| **D** | Pas toujours fiable |
+| **E** | Non fiable |
+| **F** | Fiabilité indéterminée |
+
+Toujours une seule lettre majuscule, jamais un chiffre à côté sur la fiche source : le chiffre (1–6, la
+crédibilité d'un fait) est un champ distinct, pas encore maquetté, qui vivra sur la fiche de résultat.
+Détail dans `pilote/15-mecanismes-et-references.md` §2.
+
 ## Les six rôles
 
 | Rôle | Ce qu'il fait | Qui le porte |
@@ -81,10 +105,14 @@ exception à la règle sur les capitales.
 | **plan de travail** | La zone de la recherche avancée où l'on pose les tuiles et tire les liens |
 | **préréglage** | Un ensemble de sources d'une catégorie, prêt pour la recherche simple |
 | **grappe** | Le résultat : les fiches rassemblées qui parlent de la même entité |
+| **fiche** | Ce qu'une source renvoie pour une entité : nom, identifiant, adresse, et le reste de ses propriétés |
+| **rapprochement** | Deux ou plusieurs fiches que Fusion/doublons soupçonne de parler de la même entité, en attente de validation dans l'onglet Tri |
 | **quota** | Ce qu'il reste d'appels autorisés sur une source, sur une période |
 
 Dis « source » et jamais « base », « connecteur » ou « fournisseur ». Dis « grappe » et jamais
-« cluster », « groupe » ou « regroupement ».
+« cluster », « groupe » ou « regroupement ». Dis « rapprochement » et jamais « doublon », « match » ou
+« correspondance » — une fiche seule qu'on hésite à fusionner n'est pas encore un doublon, c'est une
+hypothèse qu'on vérifie.
 
 ## Les titres des onglets
 

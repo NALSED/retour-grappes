@@ -18,7 +18,7 @@ les relie dans un plan de travail, et lance la recherche. Le but n'est pas le vo
 Cette dernière phrase commande tout le reste. Chaque fois qu'un choix d'implémentation se présente entre
 « plus de résultats » et « résultats traçables », **c'est traçable qui gagne**.
 
-## 2. Les sept règles non négociables
+## 2. Les huit règles non négociables
 
 Elles passent avant toute considération technique. Si une contrainte les empêche, arrête-toi et remonte
 le problème plutôt que de contourner.
@@ -40,6 +40,13 @@ le problème plutôt que de contourner.
    rien de lui-même. Toute action passe par un bouton pressé par une personne.
 7. **Rien d'essentiel ne dépend d'une IA.** L'Aide, la vérification de plan, les préréglages fonctionnent
    sans modèle. Un modèle absent ou hors quota dégrade le confort, jamais la fonction.
+8. **grappes vise les personnes morales, pas les personnes physiques nommées.** Entreprises,
+   associations, organisations — jamais une fonction de recherche par nom de personne physique. Les
+   données de dirigeants (une personne physique apparaissant sur la fiche d'une personne morale) ne
+   servent jamais de clé de rapprochement. Raison et détail dans `14-questions-ouvertes.md` §8 et
+   `15-mecanismes-et-references.md` §8. Tranché le 26/10/2026 — c'est la seule des sept-devenues-huit
+   règles qui touche au droit plutôt qu'à l'ergonomie ; si un besoin futur semble l'exiger, remonte la
+   question avant de l'écarter.
 
 ## 3. Ce qu'on construit : quatre onglets
 
@@ -48,10 +55,10 @@ le problème plutôt que de contourner.
 | Tableau de bord | pas encore conçu | — |
 | Recherche | conçu | `07`, `08`, `12` |
 | Réglages | conçu | `05`, `06` |
-| Tri | pas encore conçu | — |
+| Tri | conçu le 26/10/2026 | `16` |
 
-Les deux onglets non conçus sont **volontairement reportés** par Sednal. N'improvise rien dessus : laisse
-l'onglet visible et inactif, grisé, comme dans la maquette.
+Le Tableau de bord reste **volontairement reporté** par Sednal. N'improvise rien dessus : laisse l'onglet
+visible et inactif, grisé, comme dans la maquette.
 
 ## 4. L'ordre de travail
 
@@ -73,6 +80,7 @@ oblige à repasser derrière.
 | 11 | Fenêtre Aide | `11-fenetre-aide.md` | Elle lit tout le reste, donc elle vient après |
 | 12 | Recherches sauvegardées | `12-recherches-sauvegardees.md` | — |
 | 13 | Quotas, coûts, budget | `13-quotas-couts-budget.md` | Transverse, à câbler quand les sources tournent |
+| 14 | Onglet Tri | `16-onglet-tri.md` | Après Fusion/doublons (Splink) : c'est l'écran qui valide ses propositions |
 
 Questions encore ouvertes : `14-questions-ouvertes.md`. **Ne les tranche pas seul** — remonte-les.
 
@@ -99,6 +107,9 @@ pilote/
   12-recherches-sauvegardees.md
   13-quotas-couts-budget.md
   14-questions-ouvertes.md        ce qui n'est pas tranché
+  15-mecanismes-et-references.md  mecanismes existants a reprendre, cadre legal
+  16-onglet-tri.md                validation des rapprochements proposes
+  source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel
     tokens.json                   la même chose, avec les justifications de contraste
@@ -109,6 +120,7 @@ pilote/
   maquettes/
     Main.dc.html                  la page Réglages, interactive
     Recherche.dc.html             la page Recherche, interactive
+    Tri.dc.html                   la page Tri, interactive
 ````
 
 ## 6. Comment lire les maquettes
@@ -123,6 +135,11 @@ dans la pile du projet.
 
 Pour comprendre un écran rapidement : cherche `renderVals()` dans le fichier, puis suis les clés qu'elle
 renvoie jusqu'au gabarit, où elles apparaissent entre doubles accolades.
+
+**Les maquettes sont figées au 26/10/2026.** À partir de cette date, Claude n'écrit plus de code visuel
+— ni `.dc.html`, ni `preview.html` de composant. Ce qui existe reste une référence de comportement ;
+tout ce qui vient après (Tableau de bord, Tri déjà couvert, et toute évolution future) arrive en texte
+dans ces documents, et c'est momo qui l'écrit en code.
 
 Les `charte/composants/<Nom>/preview.html` sont du HTML ordinaire, lisible et copiable : c'est la
 définition visuelle exacte de chaque motif. Le `README.md` à côté dit les règles d'emploi — **lis-le, il

@@ -236,13 +236,13 @@ button { font-family: inherit; }
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 8px">
-            <span style="font-size: 13px; font-weight: 600">Origine de l'information</span>
-            <div style="display: flex; gap: 8px">
-              <sc-for list="{{origChips}}" as="c" hint-placeholder-count="2">
+            <span style="font-size: 13px; font-weight: 600">Fiabilité de la source</span>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap">
+              <sc-for list="{{fiabChips}}" as="c" hint-placeholder-count="6">
                 <button type="button" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button>
               </sc-for>
             </div>
-            <span style="font-size: 12px; line-height: 1.5; color: var(--encre-douce)">Deux sources de seconde main qui se répètent ne comptent que pour une confirmation.</span>
+            <span style="font-size: 12px; line-height: 1.5; color: var(--encre-douce)">{{panel.fiabDesc}}</span>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 8px">
@@ -674,6 +674,14 @@ class Component extends DCLogic {
       };
     }
 
+    var fiabDesc = {
+      A: 'A — Entièrement fiable : source officielle, recoupée, sans historique d\'erreur.',
+      B: 'B — Fiable d\'habitude : source établie, erreurs rares et corrigées.',
+      C: 'C — Assez fiable : source correcte mais déjà en défaut par le passé.',
+      D: 'D — Pas toujours fiable : source irrégulière, à recouper systématiquement.',
+      E: 'E — Non fiable : source peu fondée ou orientée.',
+      F: 'F — Fiabilité indéterminée : pas assez d\'historique pour juger.'
+    };
     var labels = { ok: 'opérationnelle', warn: 'à vérifier', off: 'éteinte' };
     var catName = '';
     defs.forEach(function (d) { if (d[0] === p.cat) catName = d[1]; });
@@ -698,12 +706,13 @@ class Component extends DCLogic {
         title: isEdit ? p.nom : 'Nouvelle source',
         sub: isEdit ? (catName + ' · ' + labels[p.etat]) : 'Choisis une catégorie et un rôle',
         dotStyle: self.dot(p.etat),
-        nom: p.nom, pays: p.pays, langue: p.langue || '', quota: p.quota, unite: p.unite, desc: p.desc
+        nom: p.nom, pays: p.pays, langue: p.langue || '', quota: p.quota, unite: p.unite, desc: p.desc,
+        fiabDesc: fiabDesc[p.fiabilite] || fiabDesc.B
       },
       catChips: defs.map(function (d) { return chip(d[1], p.cat === d[0], setP('cat', d[0])); }),
       roleChips: roles.map(function (r) { return chip(r[1], p.role === r[0], setP('role', r[0])); }),
       costChips: ['gratuit', 'payant'].map(function (c) { return chip(c, p.cost === c, setP('cost', c)); }),
-      origChips: ['première main', 'seconde main'].map(function (c) { return chip(c, p.origine === c, setP('origine', c)); }),
+      fiabChips: ['A', 'B', 'C', 'D', 'E', 'F'].map(function (l) { return chip(l, p.fiabilite === l, setP('fiabilite', l)); }),
       etatChips: [
         chip('opérationnelle', p.etat !== 'off', setP('etat', p.etat === 'off' ? 'ok' : p.etat)),
         chip('éteinte', p.etat === 'off', setP('etat', 'off'))
@@ -793,7 +802,7 @@ class Component extends DCLogic {
             cat: catId,
             role: d[3].replace('É', 'E'),
             cost: d[2],
-            origine: (catId === 'web' || catId === 'presse') ? 'seconde main' : 'première main',
+            fiabilite: (catId === 'web' || catId === 'presse') ? 'D' : 'B',
             pays: d[4],
             etat: d[1],
             quota: d[5] ? String(d[5][1]) : '',
@@ -983,7 +992,7 @@ class Component extends DCLogic {
       { label: 'Tableau de bord', icon: ICO['tableau-de-bord'], later: false, style: navBase + 'color: var(--encre-douce)' },
       { label: 'Recherche', icon: ICO['recherche'], later: false, style: navBase + 'color: var(--encre-douce)' },
       { label: 'Réglages', icon: ICO['reglages'], later: false, style: navBase + 'color: var(--encre); font-weight: 600; border-bottom-color: ' + accent },
-      { label: 'Tri', icon: ICO['tri'], later: true, style: navBase + 'color: var(--encre-pale)' }
+      { label: 'Tri', icon: ICO['tri'], later: false, style: navBase + 'color: var(--encre-douce)' }
     ];
 
     var subBase = 'height: 36px; padding: 0 16px; font-size: 14px; border: none; border-radius: var(--rayon-controle); cursor: pointer; display: flex; align-items: center; gap: 8px; ';
@@ -1007,12 +1016,12 @@ class Component extends DCLogic {
       tv: tv,
       panelOpen: pv.panelOpen, isEdit: pv.isEdit, isAdd: pv.isAdd, panel: pv.panel,
       catChips: pv.catChips, roleChips: pv.roleChips, costChips: pv.costChips,
-      origChips: pv.origChips, etatChips: pv.etatChips, history: pv.history,
+      fiabChips: pv.fiabChips, etatChips: pv.etatChips, history: pv.history,
       hint: pv.hint, submitLabel: pv.submitLabel, submitStyle: pv.submitStyle, panelStyle: pv.panelStyle,
       closePanel: pv.closePanel,
       openAdd: function () {
         if (self.state.sub !== 'sources') { self.openTool('add'); return; }
-        self.setState({ panel: { mode: 'add', nom: '', cat: null, role: null, cost: 'gratuit', origine: 'première main', pays: '', langue: '', etat: 'warn', quota: '', unite: '', desc: '' } });
+        self.setState({ panel: { mode: 'add', nom: '', cat: null, role: null, cost: 'gratuit', fiabilite: 'B', pays: '', langue: '', etat: 'warn', quota: '', unite: '', desc: '' } });
       },
       accent: accent,
       tabs: tabs,

@@ -7,8 +7,8 @@ Le libellé est le verbe qui nomme exactement ce qui va se passer, en minuscules
 quand il est utile : « Ajouter une source » plutôt que « Ajouter ». Jamais de capitales, jamais « OK ».
 
 Les verbes autorisés : Ajouter, Modifier, Enregistrer, Annuler, Fermer, Allumer, Éteindre, Retirer,
-Supprimer, Lancer, Réutiliser, Remettre par défaut, Ranger, Filtrer. La section « Les mots de grappes »
-donne pour chacun ce qu'il fait et ce qu'il remplace.
+Supprimer, Lancer, Réutiliser, Remettre par défaut, Ranger, Filtrer, Replier, Déplier, Confirmer, Séparer.
+La section « Les mots de grappes » donne pour chacun ce qu'il fait et ce qu'il remplace.
 
 **Retirer et supprimer ne sont pas la même chose.** Retirer sort de la liste, ne touche à aucun fichier,
 et se défait. Supprimer est définitif et demande une confirmation. Le bouton danger ne sert qu'à ces deux
