@@ -67,6 +67,21 @@ vérité-terrain, un score. Rien à inventer, seulement à appliquer.
 
 ### 2.1 Fusion/doublons (Splink) — la vérité-terrain existe déjà en kit
 
+**Avant de commencer, deux choses à ne pas confondre — voir `pilote/18-calibrage-26.10.2026.md` §2 pour
+le détail :**
+
+- Le jeu décrit ci-dessous (FEBRL / `recordlinkage`) est un jeu **externe**, sans aucun rapport avec
+  `autocal/jeux.json`. Le faire tourner ne touche à rien du système de certification de grappes.
+- **N'exécute jamais `python -m grappes.autocal.test_final` sans l'option `--essai dev` ou
+  `--essai validation`.** Le jeu test (`autocal/jeux.json["test"]`) a déjà été ouvert une fois, le
+  12/10/2026, et il est **brûlé** : une seconde ouverture est refusée par le code et consignée comme une
+  tentative de brûlage, elle n'est pas une mesure à refaire « pour voir ». Si tu veux rapporter la mesure
+  déjà faite ce jour-là (critères 1 à 8 de `docs/CERTIFICATION.md`), restitue-la **telle qu'elle existe**
+  (fichiers déjà produits côté VM), ne la relance pas.
+- Cette mesure autocal rejoue des données déjà archivées, zéro réseau : elle ne dit rien sur la vérité
+  des sources **en direct**. C'est ce que couvre 2.2 ci-dessous — les deux parties se complètent, elles
+  ne font pas le même travail.
+
 Fusion/doublons est Splink (voir `pilote/15-mecanismes-et-references.md` §1). Splink a sa propre
 méthode de contrôle qualité, directement réutilisable :
 

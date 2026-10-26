@@ -82,6 +82,7 @@ oblige à repasser derrière.
 | 13 | Quotas, coûts, budget | `13-quotas-couts-budget.md` | Transverse, à câbler quand les sources tournent |
 | 14 | Onglet Tri | `16-onglet-tri.md` | Après Fusion/doublons (Splink) : c'est l'écran qui valide ses propositions |
 | 15 | Brancher les sources | `17-sources-a-implementer.md` | Traduit `sources-candidates-21.10.2026.md` en consigne de branchement, triée par clé et priorité |
+| 16 | Calibrage sur le code réel | `18-calibrage-26.10.2026.md` | Recale ces documents sur ce que le dépôt `grappes` fait déjà — lire avant `test.md` |
 
 Questions encore ouvertes : `14-questions-ouvertes.md`. **Ne les tranche pas seul** — remonte-les.
 
@@ -111,6 +112,7 @@ pilote/
   15-mecanismes-et-references.md  mecanismes existants a reprendre, cadre legal
   16-onglet-tri.md                validation des rapprochements proposes
   17-sources-a-implementer.md     sources candidates traduites en consigne de branchement
+  18-calibrage-26.10.2026.md      ce que la lecture du depot grappes recale dans ces documents
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel
