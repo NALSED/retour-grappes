@@ -55,6 +55,10 @@ sur 15.
 Le disque n'est donc plus le facteur limitant du projet. Rouvrir cette question seulement si une nouvelle
 brique lourde est envisagée.
 
+**Complété le 27/10/2026** : feu vert donné à momo pour télécharger et brancher les bases locales du
+catalogue `22-bases-locales-27.10.2026.md`, périmètre **France uniquement**, géocodage démarré en
+version légère (GeoNames FR, pas de moteur OSM — réversible). L'étage « monde entier » reste reporté.
+
 ## 6. Radio France : les conditions d'utilisation
 
 Une mention relayée sur un forum — **non confirmée dans les CGU elles-mêmes** — indiquerait que les

@@ -181,18 +181,12 @@ chargé en base indexée (1,5 à 3× le CSV décompressé).
 En périmètre France, le seul vrai poids reste **SIRENE** (toutes les entreprises françaises). Tout le
 reste est devenu petit en se limitant à la France.
 
-**Le seul poste qui demande un arbitrage : le géocodage OSM France.** L'extrait France brut fait
-**≈ 4,3 Go** (PBF). S'en servir pour géocoder demande de le charger dans un moteur (Nominatim, Photon),
-et là il **gonfle à ≈ 30–40 Go pour la France**. Trois options :
-
-1. Géocodage léger (GeoNames FR seul, pas de moteur OSM) → socle **≈ 22–35 Go**, très à l'aise dans les
-   68 Go actuels.
-2. Géocodage OSM France complet → **≈ 55–75 Go**, à la limite du disque actuel : c'est là que ta réserve
-   de disque sert.
-3. Pas de géocodage local pour l'instant → on garde Photon en appel, comme aujourd'hui.
-
-**Socle France réaliste : entre 22 Go (option 1) et 75 Go (option 2).** L'option 1 tient sans rien
-ajouter.
+**Le géocodage OSM France : démarrage en option légère.** L'extrait France brut fait **≈ 4,3 Go** (PBF).
+S'en servir pour géocoder demande de le charger dans un moteur (Nominatim, Photon), et là il **gonfle à
+≈ 30–40 Go pour la France**. **Décidé le 27/10/2026 : on démarre en géocodage léger** (GeoNames FR seul,
+pas de moteur OSM) → socle **≈ 22–35 Go**, très à l'aise dans les 68 Go actuels, pour avancer et enchaîner
+les tests sans attendre. **Réversible** : passer au géocodeur OSM France complet (≈ 55–75 Go) plus tard,
+sur demande, si GeoNames s'avère trop pauvre en adresses précises.
 
 ## Reporté : l'étage « monde entier »
 
@@ -210,13 +204,21 @@ le jour où le périmètre s'élargira — **ne pas brancher sans remonter la qu
 C'est pour cet étage que les centaines de Go que tu proposes seraient utiles — pas pour le socle France,
 qui tient déjà.
 
-## Ordre proposé
+## Ordre de travail — feu vert donné le 27/10/2026
+
+**Momo peut lancer le téléchargement et le branchement**, dans cet ordre :
 
 1. **Le type de source `fichier_local`** (le mécanisme générique) — tout le reste en dépend.
 2. SIRENE + RNA + OpenSanctions en local — les trois plus utiles, tout de suite sans quota.
-3. GeoNames + OSM France — le géocodage local.
-4. Wikidata filtré — le plus technique (le filtre à l'import), à faire quand le reste tourne.
-5. Modèles de traduction — quand la question n°3 est tranchée.
+3. GeoNames FR + geoBoundaries France — le géocodage léger (option retenue ci-dessus).
+4. Wikidata filtré sur les organisations situées en France — le plus technique (le filtre à l'import), à
+   faire quand le reste tourne. **Rappel pour momo** : le filtre ne garde que des personnes morales,
+   jamais de personnes physiques (règle n°8) — c'est un filtre de *classe* (organisation, entreprise,
+   association…), pas un tri a posteriori.
+5. Modèles de traduction — quand la question n°3 (LibreTranslate vs DeepL) est tranchée, pas avant.
+
+GDELT (§5) et l'OSM France complet (§4 plus haut, étage 2) restent en attente d'un cadrage séparé — ne
+pas les brancher avec le reste.
 
 ## Où regarder
 
