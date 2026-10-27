@@ -117,6 +117,7 @@ pilote/
   20-recalibrage-rapprochement-fr-27.10.2026.md  proposition de jeu de cas difficiles francais (a valider)
   21-opensanctions-local-27.10.2026.md  OpenSanctions en copie locale au lieu de yente (tranche)
   22-bases-locales-27.10.2026.md  catalogue des bases a rapatrier en local, par categorie
+  23-vers-le-produit-fini-27.10.2026.md  ordre de travail pour sortir du stade "encadre"
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel
