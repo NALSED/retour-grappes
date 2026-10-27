@@ -124,6 +124,8 @@ pilote/
                                          et test pour chacune ; annule trois points du doc 23, deja faits
   25-cas-sigles-francais-27.10.2026.md   13 cas de sigles francais verifies au registre, prets a verser
                                          dans le jeu de rapprochement (mesure le point 2 du doc 24)
+  26-web-social-base-exterieure-emoji-27.10.2026.md  enrichir Web et Reseaux sociaux (RDAP, OpenAgenda),
+                                         prise base de donnees exterieure, recherche par emoji
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel
