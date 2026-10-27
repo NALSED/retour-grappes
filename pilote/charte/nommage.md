@@ -23,6 +23,7 @@ a besoin d'un mot qui n'est pas ici, c'est cette page qu'on modifie d'abord, pas
 | **Replier** / **Déplier** | Range la fenêtre Aide sur sa barre de titre, ou la rouvre | Fenêtre Aide | « Réduire », qui dit la même chose que *Filtrer* |
 | **Confirmer** | Accepte un rapprochement proposé : les fiches fusionnent dans la grappe | Onglet Tri | — |
 | **Séparer** | Refuse un rapprochement proposé : les fiches restent distinctes | Onglet Tri | « Rejeter », plus dur que ce que fait réellement l'action |
+| **Marquer comme personne morale** | Lève la règle n° 8 sur une seule fiche, qui redevient candidate au rapprochement | Détail d'une fiche écartée (Tri) | — |
 
 **Confirmer** et **Séparer** ne sont pas non plus un seul et même geste : *Confirmer* avance la grappe,
 *Séparer* n'efface rien — la fiche écartée reste une fiche normale, cherchable, juste pas fondue avec
@@ -111,6 +112,7 @@ exception à la règle sur les capitales.
 | **fiche** | Ce qu'une source renvoie pour une entité : nom, identifiant, adresse, et le reste de ses propriétés |
 | **rapprochement** | Deux ou plusieurs fiches que Fusion/doublons soupçonne de parler de la même entité, en attente de validation dans l'onglet Tri |
 | **quota** | Ce qu'il reste d'appels autorisés sur une source, sur une période |
+| **Afficher les comptes écartés par la règle n° 8 dans cette recherche** | Case des options avancées d'une recherche : lève la règle n° 8 pour cette recherche seule, sans rien fusionner automatiquement | Recherche avancée | — |
 
 Dis « source » et jamais « base », « connecteur » ou « fournisseur ». Dis « grappe » et jamais
 « cluster », « groupe » ou « regroupement ». Dis « rapprochement » et jamais « doublon », « match » ou
