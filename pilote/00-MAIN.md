@@ -115,6 +115,7 @@ pilote/
   18-calibrage-26.10.2026.md      ce que la lecture du depot grappes recale dans ces documents
   19-resultats-test-26.10.2026.md resultats du grand test de momo (test.md), 3 decisions a prendre
   20-recalibrage-rapprochement-fr-27.10.2026.md  proposition de jeu de cas difficiles francais (a valider)
+  21-opensanctions-local-27.10.2026.md  OpenSanctions en copie locale au lieu de yente (tranche)
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel

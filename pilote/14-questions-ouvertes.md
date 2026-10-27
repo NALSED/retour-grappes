@@ -28,6 +28,9 @@ modèles) ou DeepL (meilleure qualité, 500 000 caractères par mois, clé requi
 
 Proposition faite à Sednal : LibreTranslate par défaut, DeepL en option. **Pas encore validé.**
 
+La place disque qui freinait LibreTranslate n'est plus un obstacle depuis le 27/10/2026 (voir §5) : il
+reste le choix du moteur à trancher, plus la contrainte matérielle.
+
 ## 4. Le modèle d'IA
 
 Sednal a un serveur d'IA auto-hébergée dans le cadre d'un contrat professionnel. Question posée, **sans
@@ -37,10 +40,20 @@ Tant que ce n'est pas tranché, l'Assistant IA vise `local (Ollama)`.
 
 ## 5. La place disque sur la VM
 
-81 Go restants. yente en réclame 60. Aleph n'a pas été pesé. Les modèles LibreTranslate ajoutent quelques
-gigaoctets.
+**Tranché le 27/10/2026.** `/mnt/carte` offre 68 Go libres sur 100, et la VM a 12 Go de RAM disponibles
+sur 15.
 
-**Ça ne tient probablement pas.** À arbitrer avant d'installer quoi que ce soit de lourd.
+- **yente : écarté.** Il demande 60 Go et 8 Go de RAM, mais surtout il apporte un deuxième moteur de
+  rapprochement non mesuré à côté de Fusion/doublons. Remplacé par une **copie locale des données
+  OpenSanctions** (`targets.simple.csv`, 450 Mo) — voir `21-opensanctions-local-27.10.2026.md`. Gardé en
+  réserve si la copie locale s'avère trop lente, mesure à l'appui.
+- **Aleph : écarté pour l'instant.** Jamais pesé, lourd (Postgres + Elasticsearch + archive de fichiers),
+  et la seule partie utile — l'export FollowTheMoney — existe déjà dans le code (`test_f21_ftm.py`).
+- **LibreTranslate** : la place n'est plus un obstacle (quelques gigaoctets de modèles sur les ~66 Go qui
+  restent). Le choix du moteur lui-même reste la question n° 3, ci-dessus.
+
+Le disque n'est donc plus le facteur limitant du projet. Rouvrir cette question seulement si une nouvelle
+brique lourde est envisagée.
 
 ## 6. Radio France : les conditions d'utilisation
 
@@ -94,7 +107,9 @@ Voir `19-resultats-test-26.10.2026.md` pour le détail complet du rapport de mom
 - **Vérification sur gros volumes.** **Tranché le 27/10/2026 : on fait avec les clés gratuites qu'on a
   pour le moment** — pas d'élargissement de budget ni de limitation du volume de recherche. La
   limitation (3-4 noms vérifiés sur 100+) reste réelle et doit continuer à être dite clairement ; voir la
-  note ajoutée dans `13-quotas-couts-budget.md`.
+  note ajoutée dans `13-quotas-couts-budget.md`. **Complété le 27/10/2026** : la copie locale
+  d'OpenSanctions (`21-opensanctions-local-27.10.2026.md`) supprime le quota pour cette source — toujours
+  sans clé payante, donc la décision tient. La limitation ne subsiste que sur BODACC, qui reste une API.
 - **Faux « oui » réel (Fondation Abbé Pierre / Emmaüs).** Un cas réel connu a été rapproché à tort alors
   que le jeu FEBRL (synthétique) ne montre aucun faux positif à aucun seuil. Méthode proposée dans
   `20-recalibrage-rapprochement-fr-27.10.2026.md` — **à valider par Sednal avant de la remonter à momo.**
@@ -122,3 +137,8 @@ Pour éviter de rouvrir des discussions closes :
   non mis en service.
 - La vérification sur gros volumes se fait **avec les clés gratuites actuelles**, sans élargir le budget
   d'appels ni limiter le volume des recherches.
+- **yente est écarté** : OpenSanctions entre par une copie locale des données (450 Mo), et le
+  rapprochement reste dans Fusion/doublons — jamais deux moteurs de rapprochement dans la chaîne.
+- **Aleph est écarté pour l'instant** ; l'export FollowTheMoney, la seule partie utile, existe déjà.
+- grappes est un **usage personnel** qui ne sort pas de la VM : les données en CC-BY-NC (OpenSanctions)
+  sont utilisables gratuitement, **à cette condition** — à rouvrir le jour d'un usage professionnel.
