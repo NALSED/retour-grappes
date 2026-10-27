@@ -9,6 +9,19 @@ Ce document ne remplace pas `17-sources-a-implementer.md` (les API qui n'ont pas
 dit, pour chaque catégorie, ce qui existe en téléchargement, sa taille, et comment grappes s'en sert en
 local.
 
+## Périmètre : la France, pour l'instant
+
+**Tranché par Sednal le 27/10/2026 : on se concentre sur la France pour toutes les sources.** Partout où
+une base existe en version mondiale et en sous-ensemble français, on prend **le sous-ensemble français**
+(GeoNames FR, Wikidata organisations situées en France, OSM France, geoBoundaries France). Les versions
+mondiales et l'étage « monde entier » décrit plus bas sont **reportés** — n'y touche pas sans remonter la
+question. Conséquence directe : les tailles s'effondrent, et tout tient très largement dans le disque
+actuel.
+
+Deux exceptions qui restent mondiales parce qu'elles sont petites et n'ont pas de sens « franco-français » :
+**OpenSanctions** (les sanctions ne sont pas un sujet national, 450 Mo) et **GLEIF** (filtrable sur les
+LEI français, mais le fichier entier ne fait que 523 Mo — le filtre n'en vaut probablement pas la peine).
+
 ## Trois règles qui valent pour tout ce document
 
 1. **Une base locale est une source comme une autre.** Elle s'inscrit dans `config/sources/` avec sa
@@ -147,30 +160,55 @@ Pour ceux-là, le local ne change rien : on garde les API de `17`.
 
 ---
 
-## Estimation de place
+## Estimation de place — périmètre France (tailles vérifiées le 27/10/2026)
 
-Deux scénarios. Tailles **en base indexée** (plus gros que le téléchargement : compter 1,5 à 3× le CSV).
+Deux colonnes : le **téléchargement** (ce qui transite par le réseau) et le **sur disque** une fois
+chargé en base indexée (1,5 à 3× le CSV décompressé).
 
-**Socle France + international utile (big data filtrés) :**
+| Poste | Téléchargement | Sur disque | Source de la taille |
+| :-- | :-- | :-- | :-- |
+| SIRENE (stock établissement 2,7 Go + unité légale 1,2 Go) | **≈ 4 Go** zip | ≈ 15–25 Go | vérifié data.gouv |
+| RNA (associations FR) | ≈ 0,5–1 Go | ≈ 1–2 Go | estimé |
+| GLEIF (entier, ou filtré FR) | 523 Mo | ≈ 1 Go | **vérifié** |
+| OpenSanctions (entier) | 450 Mo | ≈ 1–2 Go | **vérifié** |
+| GeoNames **FR seul** (FR.zip) | ≈ 20–40 Mo | < 0,5 Go | France ≪ allCountries |
+| geoBoundaries **France** | < 0,1 Go | < 0,5 Go | France seule |
+| Wikidata **organisations situées en France** | filtré à l'import | ≈ 1–2 Go | France ≪ monde, à mesurer |
+| Modèles de traduction (paires utiles) | ≈ 2–3 Go | ≈ 2–3 Go | estimé |
+| Tranco, org-id.guide, divers | < 0,1 Go | < 1 Go | — |
+| **Sous-total (hors géocodage OSM)** | **≈ 8–10 Go** | **≈ 22–35 Go** | |
 
-| Poste | Sur disque |
-| :-- | :-- |
-| SIRENE | ≈ 10–15 Go |
-| RNA | ≈ 2 Go |
-| GLEIF | ≈ 1 Go |
-| OpenSanctions | ≈ 1–2 Go |
-| GeoNames | ≈ 3 Go |
-| OSM France (géocodage) | ≈ 5 Go |
-| geoBoundaries | ≈ 2 Go |
-| Wikidata (extrait organisations) | ≈ 5–15 Go |
-| Modèles de traduction (jeu ciblé) | ≈ 3 Go |
-| Tranco, org-id.guide, divers | < 1 Go |
-| **Total socle** | **≈ 35–50 Go** |
+En périmètre France, le seul vrai poids reste **SIRENE** (toutes les entreprises françaises). Tout le
+reste est devenu petit en se limitant à la France.
 
-Ça tient **déjà** dans les 68 Go de `/mnt/carte` actuels. Les **centaines de Go** que tu proposes
-deviennent utiles pour l'étage au-dessus : OSM monde entier, OpenAddresses monde, fenêtre GDELT large,
-Wikidata moins filtré. **À n'ajouter que si le socle tourne bien** — on ne remplit pas un disque par
-principe, on y met ce qui sert un résultat.
+**Le seul poste qui demande un arbitrage : le géocodage OSM France.** L'extrait France brut fait
+**≈ 4,3 Go** (PBF). S'en servir pour géocoder demande de le charger dans un moteur (Nominatim, Photon),
+et là il **gonfle à ≈ 30–40 Go pour la France**. Trois options :
+
+1. Géocodage léger (GeoNames FR seul, pas de moteur OSM) → socle **≈ 22–35 Go**, très à l'aise dans les
+   68 Go actuels.
+2. Géocodage OSM France complet → **≈ 55–75 Go**, à la limite du disque actuel : c'est là que ta réserve
+   de disque sert.
+3. Pas de géocodage local pour l'instant → on garde Photon en appel, comme aujourd'hui.
+
+**Socle France réaliste : entre 22 Go (option 1) et 75 Go (option 2).** L'option 1 tient sans rien
+ajouter.
+
+## Reporté : l'étage « monde entier »
+
+Hors périmètre pour l'instant (décision France du 27/10/2026). Gardé ici pour mémoire, chiffres vérifiés,
+le jour où le périmètre s'élargira — **ne pas brancher sans remonter la question** :
+
+| Poste | Taille | Source |
+| :-- | :-- | :-- |
+| OSM planet (PBF brut) | **88,5 Go** | vérifié (01/10/2026) |
+| OSM planet dans un géocodeur mondial | **≈ 1 To** | ordre de grandeur connu |
+| OpenAddresses monde | **≈ 40 Go +** | estimé |
+| Wikidata peu filtré / complet | **100 Go +** | dump complet 1,4 To décompressé (vérifié) |
+| GeoNames allCountries (monde) | ≈ 1,5 Go | estimé |
+
+C'est pour cet étage que les centaines de Go que tu proposes seraient utiles — pas pour le socle France,
+qui tient déjà.
 
 ## Ordre proposé
 
