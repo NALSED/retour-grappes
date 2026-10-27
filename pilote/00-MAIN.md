@@ -44,7 +44,9 @@ le problème plutôt que de contourner.
    associations, organisations — jamais une fonction de recherche par nom de personne physique. Les
    données de dirigeants (une personne physique apparaissant sur la fiche d'une personne morale) ne
    servent jamais de clé de rapprochement. Raison et détail dans `14-questions-ouvertes.md` §8 et
-   `15-mecanismes-et-references.md` §8. Tranché le 26/10/2026 — c'est la seule des sept-devenues-huit
+   `15-mecanismes-et-references.md` §8. **Un cas d'application trouvé en défaut dans le code le 27/10 :
+   `24-corrections-mesurees-27.10.2026.md` §1 (un compte de réseau social dont le nom est celui d'une
+   personne physique n'est pas écarté du rapprochement côté pilote, alors que le moteur, lui, le fait).** Tranché le 26/10/2026 — c'est la seule des sept-devenues-huit
    règles qui touche au droit plutôt qu'à l'ergonomie ; si un besoin futur semble l'exiger, remonte la
    question avant de l'écarter.
 
@@ -118,6 +120,8 @@ pilote/
   21-opensanctions-local-27.10.2026.md  OpenSanctions en copie locale au lieu de yente (tranche)
   22-bases-locales-27.10.2026.md  catalogue des bases a rapatrier en local, par categorie
   23-vers-le-produit-fini-27.10.2026.md  ordre de travail pour sortir du stade "encadre"
+  24-corrections-mesurees-27.10.2026.md  sept corrections tirees d'une lecture du code reel, avec preuve
+                                         et test pour chacune ; annule trois points du doc 23, deja faits
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel
