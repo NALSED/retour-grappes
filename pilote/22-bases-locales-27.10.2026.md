@@ -112,9 +112,11 @@ externe (Photon, Nominatim). Fiabilité **B** (OSM collaboratif mais sérieux), 
 | Media Cloud (annuaire de sources) | annuaire de médias par pays | CSV | petit | périodique |
 
 **GDELT ne se prend pas en entier** (c'est un flux, pas un fichier, et ça se compte en téraoctets
-cumulés). On en prend une **fenêtre glissante** (les N derniers jours) ou un filtre pays/thème à l'import.
-À cadrer avec toi avant de brancher : c'est le seul de la liste où « on prend tout » n'a pas de sens.
-GDELT impose sa mention (déjà géré, `SOURCES.txt`). Fiabilité **C/D** (agrégat automatique de presse).
+cumulés). **Tranché le 27/10/2026** : filtre **pays = France** (ou langue française) et **fenêtre
+glissante de 90 jours** — le même chiffre que `retention_days` dans `grappes/docs/conception/cycle.md`,
+pour ne pas inventer une deuxième durée de rétention dans le projet. Au-delà de 90 jours, un sujet n'est
+plus suivi, donc la presse plus ancienne n'apporte rien. GDELT impose sa mention (déjà géré,
+`SOURCES.txt`). Fiabilité **C/D** (agrégat automatique de presse).
 
 ## 6. Sanctions / organisations signalées
 
@@ -131,9 +133,9 @@ tant que l'usage reste personnel (`21`).
 | :-- | :-- | :-- | :-- | :-- |
 | **Argos Translate / LibreTranslate** (modèles) | traduction hors-ligne, par paire de langues | modèles | **≈ 100–200 Mo par paire** ; jeu ciblé (fr↔en, es, de, it, ar, ru, zh) **≈ 2–3 Go** | stable |
 
-C'est la réponse à la question n°3 (traduction, toujours ouverte) **côté matériel** : LibreTranslate
-auto-hébergé ne sort rien sur le réseau, tout est local. Le choix LibreTranslate vs DeepL reste ton
-arbitrage (`14-questions-ouvertes.md` §3). Prendre d'abord les paires utiles, pas toutes les langues.
+**LibreTranslate retenu** (`14-questions-ouvertes.md` §3, tranché le 27/10/2026) : auto-hébergé, rien ne
+sort sur le réseau. Prendre d'abord les paires utiles (fr↔en, es, de, it, ar, ru, zh), pas toutes les
+langues.
 
 ## 8. Web (listes de référence)
 
@@ -215,10 +217,11 @@ qui tient déjà.
    faire quand le reste tourne. **Rappel pour momo** : le filtre ne garde que des personnes morales,
    jamais de personnes physiques (règle n°8) — c'est un filtre de *classe* (organisation, entreprise,
    association…), pas un tri a posteriori.
-5. Modèles de traduction — quand la question n°3 (LibreTranslate vs DeepL) est tranchée, pas avant.
+5. **Modèles de traduction (LibreTranslate, paires fr↔en/es/de/it/ar/ru/zh)** — tranché, à faire.
+6. **GDELT, filtré France + fenêtre 90 jours** — tranché, à faire.
 
-GDELT (§5) et l'OSM France complet (§4 plus haut, étage 2) restent en attente d'un cadrage séparé — ne
-pas les brancher avec le reste.
+Seul l'OSM France complet (§4 plus haut, étage 2) reste en attente d'un cadrage séparé — ne pas le
+brancher avec le reste.
 
 ## Où regarder
 

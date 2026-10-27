@@ -23,10 +23,10 @@ reclasser ces quatre sources ? Ça change le contrôle n° 4 de `verifier_plan()
 
 ## 3. Le moteur de traduction par défaut
 
-LibreTranslate auto-hébergé (pas de quota, pas de clé, rien ne sort, mais quelques gigaoctets de
-modèles) ou DeepL (meilleure qualité, 500 000 caractères par mois, clé requise, données qui sortent) ?
-
-Proposition faite à Sednal : LibreTranslate par défaut, DeepL en option. **Pas encore validé.**
+**Tranché le 27/10/2026 : LibreTranslate, pas DeepL.** LibreTranslate tourne sur Argos Translate
+(CTranslate2), un moteur hors-ligne documenté — aucune donnée ne sort de la VM, aucune clé, aucun quota.
+DeepL ferait sortir du texte vers un tiers, ce qui contredit le principe (OpenSanctions, bases locales)
+retenu le même jour : usage personnel, rien ne sort de la VM.
 
 La place disque qui freinait LibreTranslate n'est plus un obstacle depuis le 27/10/2026 (voir §5) : il
 reste le choix du moteur à trancher, plus la contrainte matérielle.
