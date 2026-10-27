@@ -103,6 +103,58 @@ hashtags, de communautés — jamais de compte nommé).
 | PeerTube | aucune | **P1** | CHERCHER |
 | MatrixRooms.info | aucune, s'intègre comme moteur SearXNG | **P1** | CHERCHER |
 
+### Famille « prestataire de collecte » (Instagram, Facebook, TikTok, Google Maps, YouTube, LinkedIn)
+
+**Décidé le 13/10/2026, jamais écrit dans ce dépôt jusqu'ici** — rattrapé le 27/10/2026. La règle
+« pas de scraping de réseau social » a été levée ce jour-là, mais seulement pour une famille précise de
+prestataires commerciaux établis : **Apify, Bright Data, ZenRows**. Ce ne sont pas des scrapers écrits
+par nous : ce sont des services qui portent eux-mêmes leur conformité, au même titre que n'importe quelle
+autre source payante de ce document.
+
+Cadrage, à respecter strictement dans le code — il reprend exactement la limite de la règle n° 8, pas une
+exception à elle :
+
+| Point | Règle |
+| :-- | :-- |
+| **Entrée autorisée** | mot-clé ou lieu (ex. « association quartier Mistral Grenoble ») — jamais un compte, un pseudo ou un nom de personne |
+| **But** | trouver des **groupes informels, événements, pages d'organisation** — le même but que Mobilizon/Lemmy ci-dessus, juste sur des plateformes sans API publique |
+| **État par défaut** | **éteinte**, comme l'Assistant IA |
+| **Clé** | **celle de l'utilisateur**, jamais une clé fournie par grappes |
+| **À l'allumage** | même composant *Avertissement* que l'Assistant IA (`charte/composants/Avertissement/`) — l'utilisateur doit lire et accepter avant que la source devienne interrogeable |
+| **Rôle proposé** | CHERCHER, au même titre que Mobilizon |
+| **Fiabilité de source** | D — relais commercial, pas la plateforme elle-même |
+
+Si une recherche par mot-clé renvoie un compte nommé dans ses résultats, ce compte est une fiche parmi
+d'autres (comme un nom de dirigeant via CompanyScope, §4 ci-dessus) : il s'affiche, il ne devient jamais
+une entrée de recherche ni une clé de rapprochement.
+
+### Telegram — à clarifier avec momo avant d'écrire une nouvelle consigne
+
+Un fichier `telegram.yaml` et un test `test_telegram_identite.py` existent déjà dans le dépôt `grappes`
+(trouvés en lisant le code réel pour `18-calibrage-26.10.2026.md`), jamais mentionnés ni documentés ici.
+Avant d'écrire quoi que ce soit de neuf sur Telegram : demander à momo ce que ce fichier fait déjà. Si
+c'est l'API officielle (Bot API ou Client API) sur des **canaux publics**, ça rentre dans le même cadre
+que Mastodon/Lemmy ci-dessus — CHERCHER par mot-clé ou canal, jamais par personne. Ne pas rebrancher en
+double.
+
+### Intelligence X — limité à la recherche de domaine
+
+**Décidé le 19/10/2026, question laissée ouverte le 20/10/2026, tranchée ici le 27/10/2026** : Intelligence
+X (intelx.io) indexe à la fois des données légitimes (WHOIS, historique DNS) et des données de fuites
+(identifiants volés, contenus du dark web). La partie fuites reste hors cadre, sans exception — même
+raisonnement que pour toute base de identifiants volés.
+
+La partie domaine, elle, est la même famille que Memento TimeTravel (§1, ENRICHIR) : une recherche de
+métadonnées publiques sur un nom de domaine déjà trouvé par ailleurs, pas une recherche sur une personne.
+
+| Point | Règle |
+| :-- | :-- |
+| **Entrée autorisée** | un nom de domaine déjà présent sur une fiche trouvée par CHERCHER — jamais une saisie libre |
+| **Fonction branchée** | recherche WHOIS / historique de domaine uniquement |
+| **Fonction jamais branchée** | recherche dans les fuites, identifiants, contenus du dark web |
+| **Rôle proposé** | ENRICHIR, comme Memento TimeTravel |
+| **État par défaut** | éteinte |
+
 ## 6. Lieux
 
 | Source | Clé | Priorité | Rôle proposé |

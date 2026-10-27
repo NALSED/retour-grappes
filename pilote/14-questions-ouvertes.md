@@ -146,3 +146,8 @@ Pour éviter de rouvrir des discussions closes :
 - **Aleph est écarté pour l'instant** ; l'export FollowTheMoney, la seule partie utile, existe déjà.
 - grappes est un **usage personnel** qui ne sort pas de la VM : les données en CC-BY-NC (OpenSanctions)
   sont utilisables gratuitement, **à cette condition** — à rouvrir le jour d'un usage professionnel.
+- **Apify/Bright Data/ZenRows** (Instagram, Facebook, TikTok, Google Maps, YouTube, LinkedIn) sont
+  branchables en recherche par **mot-clé ou lieu** uniquement, éteints par défaut, avec avertissement et
+  clé de l'utilisateur — jamais par compte nommé. **Intelligence X** est branchable pour sa seule fonction
+  **WHOIS/domaine** sur une fiche déjà trouvée, jamais pour sa fonction fuites/identifiants. Les deux
+  restent sous la règle n° 8 : aucune exception, un cadrage. Détail dans `17-sources-a-implementer.md` §5.
