@@ -21,7 +21,7 @@ c'est le seul endroit de grappes où un bord coloré à gauche est autorisé.
 | **NOM** | Nom de la source en `corps-fort`, et le pays dessous en `legende` |
 | **COÛT** | *gratuit* ou le tarif |
 | **RÔLE** | Étiquette de rôle, couleur du rôle |
-| **QUOTA** | Jauge + chiffres, ou *illimité* |
+| **QUOTA** | Jauge + chiffres, *illimité*, ou *Copie locale* |
 | **ACTIONS** | *Modifier* et *Retirer*, chacun avec son pictogramme |
 
 En-têtes en `etiquette` (11 px, capitales) — le seul style en capitales.
@@ -47,8 +47,26 @@ Panneau latéral pour *Modifier*, fenêtre centrée pour *Ajouter* — voir `cha
 | **Langue** | texte | `fr`, `en`, `de`… — **nouveau, voir plus bas** |
 | État | puces | les trois états |
 | Quota | nombre + unité | vide = illimité |
+| **Accès** | puces | *API* / *Copie locale* — **nouveau, voir plus bas** |
+| **Mise à jour** | date, lecture seule | affiché seulement si Accès = Copie locale |
 | Description | texte long | — |
-| Clé d'API | **masqué** | voir plus bas |
+| Clé d'API | **masqué** | voir plus bas — masqué aussi si Accès = Copie locale, sans objet |
+
+### Le champ Accès et le libellé « Copie locale »
+
+**Décidé le 27/10/2026**, pour les sources rapatriées en fichier plutôt qu'appelées en direct (voir
+`17-sources-a-implementer.md` et `22-bases-locales-27.10.2026.md`). Une source porte désormais un champ
+**Accès** : *API* (appel réseau à chaque recherche) ou *Copie locale* (fichier téléchargé une fois,
+interrogé sans réseau).
+
+Quand Accès = Copie locale :
+- la colonne QUOTA affiche **Copie locale** au lieu de *illimité* — ce n'est pas la même information
+  qu'un vrai « illimité » (une API sans quota, par exemple Media Cloud) : une copie locale a une **date
+  de fraîcheur** que l'utilisateur doit voir d'un coup d'œil ;
+- la fiche source affiche le champ **Mise à jour** (date de la copie, lecture seule) ;
+- le champ **Clé d'API** disparaît, sans objet.
+
+Le mot ne varie jamais : ni « base locale », ni « dump », ni « cache » à l'écran (`charte/nommage.md`).
 
 ### Le champ Fiabilité de la source
 

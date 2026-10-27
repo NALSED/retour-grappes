@@ -98,6 +98,7 @@ exception à la règle sur les capitales.
 | Mot | Ce qu'il désigne |
 | :-- | :-- |
 | **source** | Un endroit où grappes va chercher : registre, API, base, flux, script |
+| **copie locale** | Une source dont les données ont été téléchargées une fois et sont interrogées sans appel réseau (voir plus bas) — jamais « base locale », « dump » ni « cache » à l'écran |
 | **outil** | Une brique qui traite ce qui passe, sans rien chercher |
 | **brique** | Une source ou un outil, quand on parle de ce qu'on pose sur le plan de travail |
 | **tuile** | La brique telle qu'elle apparaît sur le plan de travail |
