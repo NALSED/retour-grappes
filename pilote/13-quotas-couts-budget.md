@@ -49,6 +49,17 @@ fiche, pas calculée.
 L'état des clés d'API et des quotas réels de chaque source est tenu dans
 `../cles-api-26.10.2026.md`, à la racine du dépôt.
 
+## Vérification partielle sur gros volumes
+
+Décision du 27/10/2026 (`14-questions-ouvertes.md` §11) : le budget d'appels VÉRIFIER (BODACC,
+OpenSanctions…) reste celui des clés gratuites actuelles, partagé entre tous les noms d'une recherche —
+pas d'élargissement. Sur un gros volume, une petite partie seulement des noms est donc réellement
+vérifiée (constaté : 3 à 4 sur plus de 100). C'est déjà dit dans le journal technique
+(`donnees/journal_recherche.log`), qui n'est pas ce que l'utilisateur regarde. **À ajouter côté résultat
+visible** : une mention simple, « X sur Y noms vérifiés », là où VÉRIFIER affiche son résultat — pas une
+jauge supplémentaire, juste ne jamais laisser croire qu'une absence de signalement faux veut dire
+« vérifié ».
+
 ## Où regarder
 
 - `charte/composants/Quota/` — la jauge, le seuil, les chiffres

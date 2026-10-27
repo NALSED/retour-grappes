@@ -88,17 +88,16 @@ construite — seul le score de rapprochement l'est.
 
 Voir `19-resultats-test-26.10.2026.md` pour le détail complet du rapport de momo.
 
-- **Règle 2 (marquage IA) non remplie** : l'Assistant IA ne s'exécute pas, donc rien n'est produit à
-  marquer. L'implémenter maintenant, ou reporter formellement la règle pour cette tuile en le disant
-  explicitement (ce n'est pas la même chose que ne rien dire) ?
-- **Vérification sur gros volumes** : sur plus de 100 noms, seulement 3 à 4 sont vérifiés (budget d'appels
-  BODACC/OpenSanctions partagé). Élargir le budget, limiter le volume des recherches qui déclenchent
-  VÉRIFIER, ou l'accepter et le dire clairement à l'écran (comme c'est déjà fait dans le journal) ?
-- **Faux « oui » réel (Fondation Abbé Pierre / Emmaüs)** : un cas réel connu a été rapproché à tort alors
-  que le jeu FEBRL (synthétique) ne montre aucun faux positif à aucun seuil. Avant d'ajuster un seuil au
-  doigt mouillé : faut-il constituer un petit jeu de cas réels connus (comme celui-ci) en plus du jeu
-  FEBRL, pour recalibrer Fusion/doublons sur des données francophones réelles plutôt que seulement sur un
-  jeu de test anglophone générique ?
+- **Règle 2 (marquage IA) non remplie.** **Tranché le 27/10/2026 : on laisse l'Assistant IA de côté.**
+  Il reste éteint, ne s'exécute pas, et la règle 2 n'a donc rien à marquer pour l'instant — ce n'est pas
+  un oubli, c'est reporté. Rouvrir cette question le jour où l'Assistant IA est mis en service.
+- **Vérification sur gros volumes.** **Tranché le 27/10/2026 : on fait avec les clés gratuites qu'on a
+  pour le moment** — pas d'élargissement de budget ni de limitation du volume de recherche. La
+  limitation (3-4 noms vérifiés sur 100+) reste réelle et doit continuer à être dite clairement ; voir la
+  note ajoutée dans `13-quotas-couts-budget.md`.
+- **Faux « oui » réel (Fondation Abbé Pierre / Emmaüs).** Un cas réel connu a été rapproché à tort alors
+  que le jeu FEBRL (synthétique) ne montre aucun faux positif à aucun seuil. Méthode proposée dans
+  `20-recalibrage-rapprochement-fr-27.10.2026.md` — **à valider par Sednal avant de la remonter à momo.**
 
 **Bloquant pour** : rien dans l'immédiat — grappes reste utilisable en lisant les messages d'alerte,
 selon momo. Bloquant pour dire le projet « prêt » plutôt que « encadré ».
@@ -119,3 +118,7 @@ Pour éviter de rouvrir des discussions closes :
 - grappes vise les **personnes morales** ; aucune recherche par nom de personne physique.
 - La fiche source porte une **Fiabilité (A–F)**, code Admiralty, à la place d'« Origine de l'information ».
 - L'onglet **Tri** est l'écran de validation des rapprochements proposés par Fusion/doublons.
+- La règle 2 (marquage IA) reste **sans objet pour l'instant** : l'Assistant IA est laissé de côté,
+  non mis en service.
+- La vérification sur gros volumes se fait **avec les clés gratuites actuelles**, sans élargir le budget
+  d'appels ni limiter le volume des recherches.
