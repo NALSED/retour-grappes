@@ -141,21 +141,46 @@ normalisé — et « CEA » n'est pas « Commissariat à l'énergie atomique et 
 
 Le seul mécanisme qui pourrait les réunir, le regroupement par variantes de nomenklatura, est **éteint**
 (`grappes/config/classement.yaml`, `variantes.actif: false`, avec sa raison : « le regroupement enchaîne
-des noms sans rapport »). Cette décision est bonne : elle écarte une ressemblance floue. L'alias est la
-version sûre de la même chose — un rapprochement par **égalité exacte** sur un nom qu'un registre déclare
-lui-même, jamais par ressemblance.
+des noms sans rapport »). Cette décision est bonne : elle écarte une ressemblance floue.
+
+### Un contre-exemple qui limite la correction, trouvé dans le registre officiel
+
+J'avais d'abord écrit qu'un alias commun pouvait servir à **réunir** deux fiches, puisque c'est une
+égalité exacte sur un nom qu'un registre déclare lui-même, et non une ressemblance. L'annuaire des
+entreprises montre que c'est faux. Interrogé sur « CEA »
+([API recherche-entreprises](https://recherche-entreprises.api.gouv.fr/search?q=CEA)) :
+
+| Nom déclaré | Sigle | SIREN | Commune | Activité |
+| :-- | :-- | :-- | :-- | :-- |
+| COMMISSARIAT A L' ENERGIE ATOMIQUE ET AUX ENERGIES ALTERNATIVES | **CEA** | 775685019 | PARIS | recherche |
+| CEA | — | 515361517 | PARIS | 68.20B (location immobilière) |
+
+Une société s'appelle littéralement **« CEA »**, et son siège est à **Paris**, comme celui du
+Commissariat. Un alias qui vaut identité réunirait donc l'organisme de recherche nucléaire et une société
+immobilière parisienne : même chaîne, même ville, et seuls le SIREN et le code d'activité les séparent.
+
+**Donc : un alias est une preuve, pas une identité.** C'est d'ailleurs la logique propre du programme
+(un élément qui pèse dans l'indice de vraisemblance) et celle de la règle n° 6 (le programme propose, une
+personne tranche, dans l'onglet Tri).
 
 ### La correction
 
 1. Ajouter un champ `alias: list[str]` à la convention de sortie des adaptateurs et à `Decouvert`
    (`registres.py` l. 37), et le faire traverser `vers_decouvert`.
-2. Le remplir là où le service le donne : ROR (noms de type `acronym` et `alias`), Wikidata
-   (`skos:altLabel`, à ajouter à la requête SPARQL).
-3. Comparer sur l'**ensemble** des noms, pas sur le seul nom principal. Le motif existe déjà dans le
-   dépôt, bien écrit : `pilote/src/pilote/adaptateurs/opensanctions.py` l. 31-32 compare le nom voulu à
-   `{caption} ∪ properties.name`. C'est exactement ce qu'il faut généraliser.
-4. Faire entrer les alias dans le regroupement de `fusion._groupes` : même SIREN, sinon **un nom en
-   commun** (nom ou alias), sinon deux entités distinctes.
+2. Le remplir là où le service le donne :
+   - **ROR** : les noms de type `acronym` et `alias` (`ror.py` l. 17-22, aujourd'hui jetés) ;
+   - **Wikidata** : `skos:altLabel`, à ajouter à la requête SPARQL de `registres.py` l. 71-75 ;
+   - **recherche-entreprises** : le champ `sigle`, que l'API rend déjà et que `recherche_entreprises.py`
+     l. 48 ne lit pas (il prend `nom_complet`, où le sigle n'arrive que collé entre parenthèses).
+3. Comparer sur l'**ensemble** des noms quand il s'agit de **retrouver** une entité (recherche,
+   vérification). Le motif existe déjà dans le dépôt, bien écrit :
+   `pilote/src/pilote/adaptateurs/opensanctions.py` l. 31-32 compare le nom voulu à
+   `{caption} ∪ properties.name`. C'est ce qu'il faut généraliser, et c'est ce qui corrige l'échec CEA :
+   une source interrogée sur « CEA » doit reconnaître l'entité, même si elle l'appelle autrement.
+4. **Ne pas** faire entrer les alias dans le regroupement dur de `fusion._groupes` : l'identité reste le
+   SIREN, sinon le nom normalisé identique. Un alias commun **sans** SIREN commun doit devenir une
+   **paire proposée dans l'onglet Tri**, avec sa raison écrite (« ces deux fiches partagent un sigle
+   déclaré »), jamais une fusion automatique. C'est le cas CEA ci-dessus qui l'impose.
 
 Pour GLEIF, la réponse d'exemple enregistrée (`config/sources/exemples/gleif.json`) est une réponse
 factice qui ne porte que `legalName` : vérifie le nom exact du champ des autres noms sur une réponse
@@ -165,10 +190,12 @@ réelle avant de le brancher, ne le devine pas.
 
 1. ROR interrogé sur « CEA » rend une fiche dont les alias contiennent « CEA » et dont le nom est le nom
    complet ;
-2. la même entité trouvée par `sirene-local` (par son sigle) et par ROR (par son nom complet) ne fait
-   **qu'une** ligne dans le résultat, pas deux ;
-3. deux entités qui partagent un alias mais pas de SIREN et aucun nom commun ne sont **pas** réunies
-   (contrôle négatif : l'alias ne doit pas devenir une ressemblance).
+2. une source de vérification interrogée sur « CEA » **confirme** l'entité dont le sigle déclaré est
+   « CEA », au lieu de ne rien trouver (c'est l'échec de v1 corrigé) ;
+3. **contrôle négatif, obligatoire** : le Commissariat à l'énergie atomique (SIREN 775685019, Paris) et
+   la société nommée « CEA » (SIREN 515361517, Paris) ne sont **jamais** fusionnés. Ils peuvent apparaître
+   comme une paire à trancher dans le Tri ; ils ne doivent jamais devenir une seule fiche sans qu'une
+   personne l'ait confirmé.
 
 ---
 

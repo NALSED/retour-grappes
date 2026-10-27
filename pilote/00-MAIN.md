@@ -122,6 +122,8 @@ pilote/
   23-vers-le-produit-fini-27.10.2026.md  ordre de travail pour sortir du stade "encadre"
   24-corrections-mesurees-27.10.2026.md  sept corrections tirees d'une lecture du code reel, avec preuve
                                          et test pour chacune ; annule trois points du doc 23, deja faits
+  25-cas-sigles-francais-27.10.2026.md   13 cas de sigles francais verifies au registre, prets a verser
+                                         dans le jeu de rapprochement (mesure le point 2 du doc 24)
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel
