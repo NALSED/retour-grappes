@@ -113,6 +113,7 @@ pilote/
   16-onglet-tri.md                validation des rapprochements proposes
   17-sources-a-implementer.md     sources candidates traduites en consigne de branchement
   18-calibrage-26.10.2026.md      ce que la lecture du depot grappes recale dans ces documents
+  19-resultats-test-26.10.2026.md resultats du grand test de momo (test.md), 3 decisions a prendre
   source.md                       briefing Aleph/FollowTheMoney/Maltego (fourni par Sednal)
   charte/
     jetons.css                    à inclure tel quel

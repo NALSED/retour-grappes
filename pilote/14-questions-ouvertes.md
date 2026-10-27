@@ -84,6 +84,25 @@ nulle part dans la maquette. L'onglet *Tri*, sans spécification, est le candida
 crédibilité 1–6 d'un fait (axe qui s'affichera sur la fiche de résultat, pas encore maquettée) n'est pas
 construite — seul le score de rapprochement l'est.
 
+## 11. Trois décisions remontées par le grand test du 26/10/2026
+
+Voir `19-resultats-test-26.10.2026.md` pour le détail complet du rapport de momo.
+
+- **Règle 2 (marquage IA) non remplie** : l'Assistant IA ne s'exécute pas, donc rien n'est produit à
+  marquer. L'implémenter maintenant, ou reporter formellement la règle pour cette tuile en le disant
+  explicitement (ce n'est pas la même chose que ne rien dire) ?
+- **Vérification sur gros volumes** : sur plus de 100 noms, seulement 3 à 4 sont vérifiés (budget d'appels
+  BODACC/OpenSanctions partagé). Élargir le budget, limiter le volume des recherches qui déclenchent
+  VÉRIFIER, ou l'accepter et le dire clairement à l'écran (comme c'est déjà fait dans le journal) ?
+- **Faux « oui » réel (Fondation Abbé Pierre / Emmaüs)** : un cas réel connu a été rapproché à tort alors
+  que le jeu FEBRL (synthétique) ne montre aucun faux positif à aucun seuil. Avant d'ajuster un seuil au
+  doigt mouillé : faut-il constituer un petit jeu de cas réels connus (comme celui-ci) en plus du jeu
+  FEBRL, pour recalibrer Fusion/doublons sur des données francophones réelles plutôt que seulement sur un
+  jeu de test anglophone générique ?
+
+**Bloquant pour** : rien dans l'immédiat — grappes reste utilisable en lisant les messages d'alerte,
+selon momo. Bloquant pour dire le projet « prêt » plutôt que « encadré ».
+
 ---
 
 ## Ce qui est tranché, pour mémoire
